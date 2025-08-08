@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "io.github.powerbox1000.datapacksplus.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"CustomAllAccessor",
+		"HandleCustomClickActionMixin",
+		"OpenDialogMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

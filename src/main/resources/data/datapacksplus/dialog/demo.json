@@ -1,0 +1,22 @@
+{
+    "type": "notice",
+    "title": "Action Demo",
+    "body": {
+        "type": "plain_message",
+        "contents": "Type in text below to send it to the server!"
+    },
+    "inputs": [
+        {
+            "type": "text",
+            "key": "message",
+            "label": "Message"
+        }
+    ],
+    "action": {
+        "label": "Send",
+        "action": {
+            "type": "dynamic/custom",
+            "id": "datapacksplus:demo"
+        }
+    }
+}

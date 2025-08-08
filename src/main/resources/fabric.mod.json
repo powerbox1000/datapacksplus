@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "datapacksplus",
+	"version": "${version}",
+	"name": "Datapacks+",
+	"description": "Adds some much needed features to datapacks (fuck you Mojang)",
+	"authors": [
+		"Powerbox1000"
+	],
+	"contact": {
+		"homepage": "https://powerbox1000.github.io",
+		"sources": ""
+	},
+	"license": "LGPL-3.0-or-later",
+	"icon": "assets/datapacksplus/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"io.github.powerbox1000.datapacksplus.DatapacksPlus"
+		]
+	},
+	"mixins": [
+		"datapacksplus.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.8",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

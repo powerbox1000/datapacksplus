@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schema-tree.json",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "command": {
+      "type": "string"
+    },
+    "payloadSchema": {
+      "$ref": "#/$defs/nodeMap"
+    }
+  },
+  "required": ["command", "payloadSchema"],
+  "additionalProperties": false,
+
+  "$defs": {
+    "node": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "mapping": {
+          "type": "string"
+        },
+        "children": {
+          "$ref": "#/$defs/nodeMap"
+        }
+      },
+      "required": ["type"],
+      "oneOf": [
+        {
+          "required": ["mapping"],
+          "not": { "required": ["children"] }
+        },
+        {
+          "required": ["children"],
+          "not": { "required": ["mapping"] }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "nodeMap": {
+      "type": "object",
+      "patternProperties": {
+        ".*": { "$ref": "#/$defs/node" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

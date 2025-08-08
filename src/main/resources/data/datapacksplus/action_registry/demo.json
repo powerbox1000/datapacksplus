@@ -1,0 +1,9 @@
+{
+    "command": "function datapacksplus:demo {message: %1}",
+    "payloadSchema": {
+        "message": {
+            "type": "string",
+            "mapping": "%1"
+        }
+    }
+}
