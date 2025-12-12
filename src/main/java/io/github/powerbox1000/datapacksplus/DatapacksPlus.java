@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
 import com.google.gson.JsonObject;
@@ -23,14 +23,14 @@ public class DatapacksPlus implements ModInitializer {
 	public void onInitialize() {
 		ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(new SimpleSynchronousResourceReloadListener() {
 			@Override
-			public ResourceLocation getFabricId() {
-				return ResourceLocation.fromNamespaceAndPath(MOD_ID, ACTION_REGISTRY_ID);
+			public Identifier getFabricId() {
+				return Identifier.fromNamespaceAndPath(MOD_ID, ACTION_REGISTRY_ID);
 			}
 		
 			@Override
 			public void onResourceManagerReload(ResourceManager manager) {
 				ActionRegistry.clear();
-				for(ResourceLocation id : manager.listResources(ACTION_REGISTRY_ID, path -> path.toString().endsWith(".json")).keySet()) {
+				for(Identifier id : manager.listResources(ACTION_REGISTRY_ID, path -> path.toString().endsWith(".json")).keySet()) {
 					try(InputStream stream = manager.getResource(id).get().open()) {
 						// Expect string command and object payloadSchema
 						JsonObject data = JsonParser.parseReader(new InputStreamReader(stream)).getAsJsonObject();
